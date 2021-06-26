@@ -15,8 +15,10 @@ migrate = Migrate()
 def register_buleprints(app):
     # 导入蓝图实例
     from app.api.v1.login import login_bp
+    from app.api.v1.list import items_bp
     # 注册蓝图
     app.register_blueprint(login_bp, url_prefix='/v1')
+    app.register_blueprint(items_bp,url_prefix='/v1')
 
 
 # 注册插件
@@ -25,6 +27,7 @@ def register_plugin(app):
     cors.init_app(app, supports_credentials=True, resources={r"/*": {"origins": "*"}})
     db.init_app(app)
     from app.models.user import User
+    from app.models.goods import Goods
 
 
 # 创建工厂函数

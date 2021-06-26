@@ -5,13 +5,13 @@ from app.utils.error_code import AuthFailed, ParameterException
 
 
 class User(db.Model):
-    __tablename__ ="user"
-    id = db.Column(db.Integer,primary_key=True)
-    username = db.Column(db.String(40),nullable=False)
-    _password = db.Column(db.String(120),nullable=False)
-    auth=db.Column(db.Integer,default=1)
-    name =db.Column(db.String(40),nullable=False)
-
+    __tablename__ = "user"
+    id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+    username = db.Column(db.String(40), nullable=False)
+    _password = db.Column(db.String(120), nullable=False)
+    auth = db.Column(db.Integer, default=1)
+    name = db.Column(db.String(40), nullable=False)
+    telphone = db.Column(db.String(11), nullable=False)
 
     @staticmethod
     def verify(username, password):
