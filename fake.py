@@ -2,6 +2,7 @@ from app import db, create_app
 
 from app.models.user import User
 from app.models.goods import Goods
+from app.models.types import Type
 
 app = create_app()
 

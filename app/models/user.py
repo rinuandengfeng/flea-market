@@ -1,3 +1,6 @@
+
+from datetime import datetime
+
 from werkzeug.security import generate_password_hash, check_password_hash
 
 from app import db
@@ -7,11 +10,13 @@ from app.utils.error_code import AuthFailed, ParameterException
 class User(db.Model):
     __tablename__ = "user"
     id = db.Column(db.Integer, autoincrement=True, primary_key=True)
-    username = db.Column(db.String(40), nullable=False)
-    _password = db.Column(db.String(120), nullable=False)
-    auth = db.Column(db.Integer, default=1)
-    name = db.Column(db.String(40), nullable=False)
-    telphone = db.Column(db.String(11), nullable=False)
+    username = db.Column(db.String(40), nullable=False)  # 登录用户名
+    _password = db.Column(db.String(120), nullable=False)  # 密码
+    auth = db.Column(db.Integer, default=1)  # 权限
+    name = db.Column(db.String(40), nullable=False)  # 用户名
+    telphone = db.Column(db.String(11), nullable=False)  # 电话
+    icon = db.Column(db.String(100))  # 头像
+    udatetime = db.Column(db.DateTime, default=datetime.now)
 
     @staticmethod
     def verify(username, password):

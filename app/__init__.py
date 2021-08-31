@@ -5,7 +5,6 @@ from flask_cors import CORS
 
 # 创建db实例
 
-
 db = SQLAlchemy()
 cors = CORS()  # 设置跨域
 migrate = Migrate()
@@ -15,10 +14,14 @@ migrate = Migrate()
 def register_buleprints(app):
     # 导入蓝图实例
     from app.api.v1.login import login_bp
-    from app.api.v1.list import items_bp
+    from app.api.v1.list import goods_bp
+    from app.api.v1.search import search_bp
+    from app.api.v1.register import register_bp
     # 注册蓝图
     app.register_blueprint(login_bp, url_prefix='/v1')
-    app.register_blueprint(items_bp,url_prefix='/v1')
+    app.register_blueprint(goods_bp, url_prefix='/v1')
+    app.register_blueprint(search_bp, url_prefix='/v1')
+    app.register_blueprint(register_bp,url_prefix='/v1')
 
 
 # 注册插件
